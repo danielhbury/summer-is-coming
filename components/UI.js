@@ -43,12 +43,14 @@ export default class UI extends React.Component {
           <View
             style={{
               flexDirection: 'row',
+              height: 720,
               flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'center',
               transform: [
                 { rotateX: 0 },
-                { translate: [-9.5, 2.5, -10] },
+                { translate: [1600, 2.5, -10] },
               ],
-              // width: 20,
             }}
           >
             {cards}
