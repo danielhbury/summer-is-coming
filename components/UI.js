@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-vr';
 import CylindricalPanel from 'CylindricalPanel'
 import CardContainer from './CardContainer';
-import ExpandCard from './ExpandCard';
+import ExpandCardUI from './ExpandCardUI';
 
 export default class UI extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class UI extends React.Component {
     const cards = this.cardConfig.map((card) =>
       <CardContainer
         key={card.key}
-        onClick={() => {
+        onClick={()=>{
           this.props.onClick(card.key);
           this.setState({ expandCard: true, key: card.key })
         }}
@@ -27,10 +27,15 @@ export default class UI extends React.Component {
         title={card.title}
         subtitle={card.subtitle}
         description={card.description}
+        images={card.images}
       />);
 
     return this.state.expandCard ? (
-      <ExpandCard keyValue={this.state.key} />
+      <ExpandCardUI
+        handleEnvironmentChange={this.props.handleEnvironmentChange}
+        keyValue={this.state.key} 
+        config={this.cardConfig[this.state.key]}
+      />
     ) : (
         <CylindricalPanel
           layer={{
