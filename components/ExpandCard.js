@@ -1,39 +1,46 @@
 import React from 'react';
-import { View, Text } from 'react-vr'
+import {
+  View,
+  Text,
+  Image,
+  asset
+} from 'react-vr'
 
 class ExpandCard extends React.Component {
   render () {
-    console.log('touched', this.props.keyValue)
+    const { title, description, thumbnailSrc } = this.props;
     return (
-
       <View
         style={{
           flexDirection: 'row',
           flexWrap: 'wrap',
-          transform: [
-            {rotateX: 0},
-            {translate: [-9.3, 2.5, -10]},
-          ],
-          // width: 20,
         }}
       >
-        <View
+        <Text style={{
+          color: 'lightgrey',
+          fontSize: .5,
+          fontWeight: 'bold',
+          textAlign: 'left',
+          fontFamily: 'Helvetica',
+          padding: 1,
+        }}>
+          {title}
+        </Text>
+        <Text style={{
+          color: 'grey',
+          fontSize: .5,
+          textAlign: 'center',
+          fontFamily: 'Helvetica',
+        }}>
+          {description}
+        </Text>
+        <Image
           style={{
-            alignItems: 'center',
-            flexDirection: 'row',
-            margin: 0.0125,
-            width: 6.3,
+            width: 10,
+            height: 10,
           }}
-        >
-          <View style={{
-            width: 8,
-            height: 8,
-            backgroundColor: 'green',
-            alignItems: 'center'
-            // opacity: 0.3
-          }}>
-          </View>
-        </View>
+          source={asset(thumbnailSrc)}
+        />
       </View>
     )
   }
