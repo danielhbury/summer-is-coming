@@ -7,7 +7,7 @@ import {
 import ExpandCard from './ExpandCard'
 
 class ExpandCardUI extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       keyValue: this.props.keyValue,
@@ -30,82 +30,73 @@ class ExpandCardUI extends React.Component {
       images: nextProps.config.images
     });
   }
-  render () {
-    const { title, description, images, thumbnailSrc } = this.state
+  render() {
+    const { title, description, images, thumbnailSrc } = this.state;
+    const { expandedIdx, handleGoBack, handleApplyNow } = this.props;
     const allImages = images.map((img, idx) => (
       <View
         key={idx}
         style={{
-          // width: 10,
           backgroundColor: '#FFF',
           alignItems: 'center',
-          padding: 1,
-          marginBottom: 2,
-          transform: [{
-              rotateX: 0
-            },
-            {
-              translate: [-9.3, 3.5, -10]
-            },
-          ],
+          justifyContent: 'center',
+          padding: 10,
         }}
       >
         <VrButton
           onClick={() => this.props.handleEnvironmentChange(img.src)}
         >
           <Text style={{
-            color: 'lightgrey',
-            fontSize: .5,
+            color: '#006FCF',
+            fontSize: 16,
             fontWeight: 'bold',
             textAlign: 'center',
             fontFamily: 'Helvetica',
           }}
           >
-          {img.name}
+            {img.name}
           </Text>
         </VrButton>
       </View>
     ))
+    const xVal = 1600 + (310 * expandedIdx) - (310/2);
     return (
-      
       <View style={{
-        // height: 20,
+        height: 720,
         justifyContent: 'center',
-        alignItems: 'stretch',
+        alignItems: 'center',
         flexDirection: 'row',
         transform: [{
-            rotateX: 0
-          },
-          {
-            translate: [-9.3, 4, -10]
-          },
+          rotateX: 0
+        },
+        {
+          translate: [xVal, 2.5, -10]
+        },
         ],
       }}>
         <View
           style={{
-            height: 10,
-            width: 20,
+            height: 350,
+            width: 700,
             backgroundColor: '#FFF',
             alignItems: 'center',
-            marginRight:1,
-            transform: [{
-                rotateX: 0
-              },
-              {
-                translate: [-9.3, 4, -10]
-              },
-            ],
+            marginRight: 1,
           }}
         >
           <ExpandCard
             title={title}
             description={description}
             thumbnailSrc={thumbnailSrc}
+            handleGoBack={handleGoBack}
+            handleApplyNow={handleApplyNow}
           />
         </View>
 
         <View style={{
           flexDirection: 'column',
+          height: 350,
+          justifyContent: 'space-around',
+          marginLeft: 10,
         }}>
           {allImages}
         </View>

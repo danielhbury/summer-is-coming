@@ -86,7 +86,6 @@ class Main extends React.Component {
         <Canvas background={this.state.background} />
         <UI
           cardConfig={cardConfig}
-          onClick={key => console.log(key) }
           handleEnvironmentChange={this.handleEnvironmentChange}
         />
       </View>

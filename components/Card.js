@@ -2,25 +2,6 @@ import React from 'react'
 import { View, Text, Image, asset } from 'react-vr'
 
 class Card extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      thumbnailSrc: this.props.thumbnailSrc,
-      backgroundSrc: this.props.backgroundSrc,
-      title: this.props.title,
-      subtitle: this.props.subtitle,
-      description: this.props.description
-    }
-  }
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      thumbnailSrc: nextProps.thumbnailSrc,
-      backgroundSrc: nextProps.backgroundSrc,
-      title: nextProps.title,
-      subtitle: nextProps.subtitle,
-      description: nextProps.description
-    });
-  }
   render() {
     const {
       thumbnailSrc,
@@ -28,7 +9,7 @@ class Card extends React.Component {
       title,
       subtitle,
       description
-    } = this.state
+    } = this.props
     return (
       <View style={{
         width: 300,
@@ -39,7 +20,7 @@ class Card extends React.Component {
         <Image
           style={{
             width: 300,
-            height: 150,
+            height: 160,
           }}
           source={asset(thumbnailSrc)}
         >
@@ -48,7 +29,7 @@ class Card extends React.Component {
           paddingBottom: 1
         }}>
           <Text style={{
-            color: 'lightgrey',
+            color: '#006FCF',
             fontSize: 20,
             fontWeight: 'bold',
             textAlign: 'center',
@@ -57,7 +38,7 @@ class Card extends React.Component {
             {title}
           </Text>
           <Text style={{
-            color: 'grey',
+            color: '#53565A',
             fontSize: 12,
             textAlign: 'center',
             fontFamily: 'Helvetica'
