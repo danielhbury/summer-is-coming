@@ -117,7 +117,7 @@ class ExpandCardUI extends React.Component {
         <View
           style={{
             height: 350,
-            width: 700,
+            width: 600,
             backgroundColor: '#FFF',
             alignItems: 'center',
             marginRight: 1,

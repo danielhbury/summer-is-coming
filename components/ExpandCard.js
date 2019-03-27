@@ -18,7 +18,7 @@ class ExpandCard extends React.Component {
       >
         <View
           style={{
-            width: 350,
+            width: 300,
             justifyContent: 'space-between',
           }}
         >
@@ -42,7 +42,7 @@ class ExpandCard extends React.Component {
           <View
             style={{
               height: 100,
-              width: 350,
+              width: 300,
               backgroundColor: '#fff',
               padding: 10,
               justifyContent: 'center',
@@ -109,12 +109,12 @@ class ExpandCard extends React.Component {
         </View>
         <View
           style={{
-            width: 350,
+            width: 300,
           }}
         >
           <Image
             style={{
-              width: 350,
+              width: 300,
               height: 350,
             }}
             source={asset(thumbnailSrc)}
