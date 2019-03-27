@@ -73,8 +73,9 @@ export default class UI extends React.Component {
             alignItems: 'center',
             justifyContent: 'center',
             transform: [
-              { rotateX: 0 },
-              { translate: [1600, 4.5, -10] },
+              // { rotateX: 0 },
+              { translate: [0, 4.5, -10] },
+              // { translateX: 1600 },
             ],
           }}
         >
@@ -87,7 +88,7 @@ export default class UI extends React.Component {
         layer={{
           width: 4096,
           height: 720,
-          density: 4680,
+          density: 4096,
           radius: 600
         }}
       >

@@ -41,7 +41,7 @@ class ExpandCardUI extends React.Component {
 
   animateIn = () => {
     const { expandedIdx } = this.props;
-    const xVal = 1600 + (310 * expandedIdx) - (310 / 2);
+    const xVal = (315 * expandedIdx) - (310 / 2);
     Animated.timing(
       this.state.animatedX, {
         toValue: xVal,
