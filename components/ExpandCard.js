@@ -24,8 +24,8 @@ class ExpandCard extends React.Component {
         >
           <View
             style={{
-              padding: 10,
-              borderBottomColor: '#ECEDEE',
+              padding: 20,
+              borderBottomColor: '#F7F8F9',
               borderBottomWidth: 1
             }}
           >
@@ -41,7 +41,11 @@ class ExpandCard extends React.Component {
           </View>
           <View
             style={{
+              height: 100,
+              width: 350,
+              backgroundColor: '#fff',
               padding: 10,
+              justifyContent: 'center',
             }}
           >
             <Text style={{
@@ -58,6 +62,8 @@ class ExpandCard extends React.Component {
               flexDirection: 'row',
               justifyContent: 'flex-end',
               padding: 10,
+              borderTopColor: '#F7F8F9',
+              borderTopWidth: 1
             }}
           >
             <VrButton
@@ -66,13 +72,13 @@ class ExpandCard extends React.Component {
                 padding: 10,
                 borderWidth: 1,
                 borderColor: '#006FCF',
-                borderRadius: 4,
+                borderRadius: 6,
                 marginRight: 10,
               }}
             >
               <Text
                 style={{
-                  fontSize: 10,
+                  fontSize: 12,
                   color: '#006FCF',
                 }}
               >
@@ -86,13 +92,13 @@ class ExpandCard extends React.Component {
                 borderWidth: 1,
                 backgroundColor: '#006FCF',
                 borderColor: '#006FCF',
-                borderRadius: 4,
+                borderRadius: 6,
                 marginRight: 10,
               }}
             >
               <Text
                 style={{
-                  fontSize: 10,
+                  fontSize: 12,
                   color: '#FFF',
                 }}
               >

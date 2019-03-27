@@ -2,8 +2,10 @@ import React from 'react';
 import {
   View,
   Text,
-  VrButton
+  VrButton,
+  Animated,
 } from 'react-vr'
+import { Easing } from 'react-native';
 import ExpandCard from './ExpandCard'
 
 class ExpandCardUI extends React.Component {
@@ -16,9 +18,15 @@ class ExpandCardUI extends React.Component {
       title: this.props.config.title,
       subtitle: this.props.config.subtitle,
       description: this.props.config.description,
-      images: this.props.config.images
+      images: this.props.config.images,
+      animatedX: new Animated.Value(0),
     }
   }
+
+  componentWillMount() {
+    this.animateIn();
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setState({
       keyValue: nextProps.keyValue,
@@ -30,25 +38,58 @@ class ExpandCardUI extends React.Component {
       images: nextProps.config.images
     });
   }
+
+  animateIn = () => {
+    const { expandedIdx } = this.props;
+    const xVal = 1600 + (310 * expandedIdx) - (310 / 2);
+    Animated.timing(
+      this.state.animatedX, {
+        toValue: xVal,
+        duration: 1000,
+        easing: Easing.in,
+      }
+    ).start();
+  }
+
+  animateOut = () => {
+    Animated.timing(
+      this.state.animatedX, {
+        toValue: 0,
+        duration: 1000,
+        easing: Easing.in,
+      }
+    ).start();
+  }
+
+  componentWillUnmount() {
+    this.animateOut();
+  }
+
   render() {
-    const { title, description, images, thumbnailSrc } = this.state;
-    const { expandedIdx, handleGoBack, handleApplyNow } = this.props;
+    const { title, description, images, thumbnailSrc, animatedX } = this.state;
+    const { expandedIdx, handleGoBack, handleApplyNow, handleEnvironmentChange } = this.props;
+    console.log('hit render', animatedX);
     const allImages = images.map((img, idx) => (
       <View
         key={idx}
         style={{
-          backgroundColor: '#FFF',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: 10,
         }}
       >
         <VrButton
-          onClick={() => this.props.handleEnvironmentChange(img.src)}
+          onClick={() => handleEnvironmentChange(img.src)}
+          style={{
+            padding: 10,
+            backgroundColor: '#FFF',
+            borderRadius: 6,
+            borderWidth: 1,
+            borderColor: '#006FCF',
+          }}
         >
           <Text style={{
             color: '#006FCF',
-            fontSize: 16,
+            fontSize: 12,
             fontWeight: 'bold',
             textAlign: 'center',
             fontFamily: 'Helvetica',
@@ -59,18 +100,17 @@ class ExpandCardUI extends React.Component {
         </VrButton>
       </View>
     ))
-    const xVal = 1600 + (310 * expandedIdx) - (310/2);
+    const xVal = 1600 + (310 * expandedIdx) - (310 / 2);
+
     return (
-      <View style={{
+      <Animated.View style={{
         height: 720,
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
-        transform: [{
-          rotateX: 0
-        },
+        transform: [
         {
-          translate: [xVal, 2.5, -10]
+          translateX: animatedX,
         },
         ],
       }}>
@@ -100,7 +140,7 @@ class ExpandCardUI extends React.Component {
         }}>
           {allImages}
         </View>
-      </View>
+      </Animated.View>
     )
   }
 }

@@ -16,6 +16,7 @@ class Card extends React.Component {
         height: 300,
         backgroundColor: '#FFF',
         alignItems: 'center',
+        justifyContent: 'space-between',
       }}>
         <Image
           style={{
@@ -25,9 +26,7 @@ class Card extends React.Component {
           source={asset(thumbnailSrc)}
         >
         </Image>
-        <View style={{
-          paddingBottom: 1
-        }}>
+        <View>
           <Text style={{
             color: '#006FCF',
             fontSize: 20,
@@ -37,6 +36,15 @@ class Card extends React.Component {
           }}>
             {title}
           </Text>
+        </View>
+        <View
+          style={{
+            height: 100,
+            width: 300,
+            backgroundColor: '#fff',
+            padding: 10,
+          }}
+        >
           <Text style={{
             color: '#53565A',
             fontSize: 12,

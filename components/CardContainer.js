@@ -21,7 +21,7 @@ class CardContainer extends React.Component {
     Animated.timing(
       this.state.animatedTranslation, {
         toValue: 1.5,
-        duration: 100,
+        duration: 1000,
         easing: Easing.in,
       }
     ).start();
@@ -31,7 +31,7 @@ class CardContainer extends React.Component {
     Animated.timing(
       this.state.animatedTranslation, {
         toValue: 0,
-        duration: 100,
+        duration: 1000,
         easing: Easing.in,
       }
     ).start();
